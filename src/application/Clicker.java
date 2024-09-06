@@ -22,6 +22,7 @@ public class Clicker implements Runnable {
     public void setTargetCPS(int cps){
         targetCPS = cps;
     }
+
     public void setRandomness(float rand){
         randomness = rand;
     }
@@ -29,6 +30,11 @@ public class Clicker implements Runnable {
     public boolean getState(){
         return isEnabled;
     }
+
+    public int getDelta(){
+        return (int)(System.currentTimeMillis() - prevMs);
+    }
+
     public void Enable(){
         isEnabled = true;
         prevMs = System.currentTimeMillis();

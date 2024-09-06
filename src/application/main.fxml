@@ -94,7 +94,7 @@
             <Text layoutX="65.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Randomness" />
             <Slider fx:id="cpsSlider" blockIncrement="4.0" layoutX="29.0" layoutY="95.0" max="35.0" showTickLabels="true" showTickMarks="true" value="10.0" />
             <Text layoutX="78.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avg cps" />
-            <LineChart fx:id="cpsGraph" layoutX="297.0" layoutY="187.0" prefHeight="214.0" prefWidth="328.0" title="CPS over time">
+            <LineChart fx:id="cpsGraph" animated="false" layoutX="297.0" layoutY="187.0" legendVisible="false" prefHeight="214.0" prefWidth="328.0" title="CPS over time">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
