@@ -2,6 +2,7 @@ package application;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.util.Random;
 
 public class Clicker implements Runnable {
 
@@ -9,6 +10,21 @@ public class Clicker implements Runnable {
     private int deltanext = 250;
     private boolean isEnabled = false;
     private int defaultStartDelay = 3500;
+    private int targetCPS = 20;
+    private float randomness = 0;
+
+    private Random random;
+
+    public Clicker(){
+        random = new Random();
+    }
+
+    public void setTargetCPS(int cps){
+        targetCPS = cps;
+    }
+    public void setRandomness(float rand){
+        randomness = rand;
+    }
 
     public boolean getState(){
         return isEnabled;
@@ -42,7 +58,7 @@ public class Clicker implements Runnable {
             prevMs = System.currentTimeMillis();
 
             simulateClick();
-            deltanext = 250;
+            deltanext = (1000 / targetCPS) + (int)(randomness * (random.nextFloat() * targetCPS / 2f));
         }
         return true;
     }

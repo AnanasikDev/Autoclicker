@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,8 @@ public class Main extends Application
     private static Stage stage;
     private static Scene scene;
     public static Clicker clicker;
+
+    public static EventController eventController;
 
     @Override
     public void start(Stage stage) throws Exception
@@ -30,6 +33,8 @@ public class Main extends Application
 
         Thread clickerThread = new Thread(clicker);
         clickerThread.start();
+
+        eventController.Init();
     }
 
     public static void main(String[] args)
