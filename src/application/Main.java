@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+package application;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class autoclicker extends Application
+public class Main extends Application
 {
     private static Stage stage;
     private static Scene scene;
@@ -37,21 +39,21 @@ public class autoclicker extends Application
 
     private void setPrimaryStage(Stage stage)
     {
-        autoclicker.stage = stage;
+        Main.stage = stage;
     }
 
     public static Stage getMainStage()
     {
-        return autoclicker.stage;
+        return Main.stage;
     }
 
     private void setPrimaryScene(Scene scene)
     {
-        autoclicker.scene = scene;
+        Main.scene = scene;
     }
 
     public static Scene getMainScene()
     {
-        return autoclicker.scene;
+        return Main.scene;
     }
 }
