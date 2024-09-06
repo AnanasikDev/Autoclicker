@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package application;
 
 import javafx.application.Application;
@@ -17,10 +11,13 @@ public class Main extends Application
 {
     private static Stage stage;
     private static Scene scene;
+    public static Clicker clicker;
 
     @Override
     public void start(Stage stage) throws Exception
     {
+        clicker = new Clicker();
+
         stage.initStyle(StageStyle.DECORATED);
         setPrimaryStage(stage);
         setPrimaryScene(scene);
@@ -30,6 +27,9 @@ public class Main extends Application
 
         stage.setScene(scene);
         stage.show();
+
+        Thread clickerThread = new Thread(clicker);
+        clickerThread.start();
     }
 
     public static void main(String[] args)

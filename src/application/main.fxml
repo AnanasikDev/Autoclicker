@@ -88,8 +88,8 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="440.0" layoutY="18.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="186.0" text="Test area" />
-            <Button fx:id="enablebtn" layoutX="32.0" layoutY="22.0" mnemonicParsing="false" onAction="#enable" prefHeight="27.0" prefWidth="133.0" text="Enable" />
+            <Button fx:id="testAreaBtn" layoutX="440.0" layoutY="18.0" mnemonicParsing="false" onAction="#onTestAreaClick" prefHeight="63.0" prefWidth="186.0" text="Test area" />
+            <Button fx:id="toggleBtn" layoutX="32.0" layoutY="22.0" mnemonicParsing="false" onAction="#toggle" prefHeight="27.0" prefWidth="133.0" text="Enable" />
             <Slider layoutX="29.0" layoutY="92.0" />
             <Text layoutX="65.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Randomness" />
             <Slider layoutX="29.0" layoutY="146.0" />

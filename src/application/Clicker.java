@@ -10,6 +10,9 @@ public class Clicker implements Runnable {
     private boolean isEnabled = false;
     private int defaultStartDelay = 3500;
 
+    public boolean getState(){
+        return isEnabled;
+    }
     public void Enable(){
         isEnabled = true;
         prevMs = System.currentTimeMillis();
