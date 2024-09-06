@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 public class Main {
     public static void main(String[] args) {
 
+        Clicker clicker = new Clicker();
+        Stats stats = new Stats();
+
         // Create a new JFrame (the window)
         JFrame frame = new JFrame("Empty Window");
 
@@ -25,7 +28,8 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 try {
                     // to sleep 10 seconds
-                    Thread.sleep(2000);
+                    clicker.Enable();
+                    Thread.sleep(100);
                 } catch (InterruptedException ie) {
                     // recommended because catching InterruptedException clears interrupt flag
                     Thread.currentThread().interrupt();
@@ -35,13 +39,23 @@ public class Main {
             }
         });
 
+        cpstest.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stats.clicks++;
+                cpstest.setText(stats.clicks + " clicks");
+            }
+        });
+
         // Add the button to the frame
-        frame.add(button, BorderLayout.CENTER); // Add to the center of the frame
+        frame.add(button, BorderLayout.NORTH); // Add to the center of the frame
+        frame.add(cpstest, BorderLayout.SOUTH); // Add to the center of the frame
 
         // Make the window visible
         frame.setVisible(true);
 
-        Thread clickerThread = new Thread(new Clicker());
+        Thread clickerThread = new Thread(clicker);
         clickerThread.start();
     }
 }
