@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+//import com.github.kwhat.jnativehook.keyboard.*;
 
 public class Main extends Application
 {
@@ -20,6 +22,7 @@ public class Main extends Application
     public void start(Stage stage) throws Exception
     {
         clicker = new Clicker();
+        Watchdog.Init();
 
         stage.initStyle(StageStyle.DECORATED);
         setPrimaryStage(stage);
@@ -35,6 +38,12 @@ public class Main extends Application
         clickerThread.start();
 
         eventController.Init();
+
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                System.out.println("Hello");
+            }
+        });
     }
 
     public static void main(String[] args)

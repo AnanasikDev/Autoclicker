@@ -3,12 +3,15 @@ package application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 
 import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -31,11 +34,12 @@ public class EventController {
             System.out.println(rand);
         });
 
-        XYChart.Series<String, Float> cpsData = new XYChart.Series<>();
-        cpsGraph.getData().add(cpsData);
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        //cpsData.setData(FXCollections.observableList(new XYChart.Data<Float, Float>(1.f,2.f)));
+        cpsGraph.getData().add(series);
     }
 
-    Map<String, Float> cpsDataDict = new Hashtable<>();
+    Map<Float, Float> cpsDataDict = new HashMap<>();
 
     @FXML
     private Button testAreaBtn;
@@ -47,7 +51,7 @@ public class EventController {
     private Slider cpsSlider;
 
     @FXML
-    public LineChart<String, Float> cpsGraph;
+    public LineChart<Number, Number> cpsGraph;
 
     public void toggle(ActionEvent e){
         if (Main.clicker.getState())
@@ -65,9 +69,18 @@ public class EventController {
 
     public void onTestAreaClick(ActionEvent e){
         Stats.clicks++;
-        cpsDataDict.put(String.valueOf(Stats.clicks), (float)Main.clicker.getDelta());
-        updateLineChartWithMap(cpsGraph, cpsDataDict);
-        testAreaBtn.setText(Stats.clicks + " clicks");
+        //cpsDataDict.put(String.valueOf(Stats.clicks), (float)Main.clicker.getDelta());
+//        cpsDataDict.put(1.f, 2.f);//  (float)Stats.clicks, (float)Main.clicker.getDelta());
+//        cpsGraph.getData().clear();
+//        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+//        // Add the data from the Map to the series
+//        for (Map.Entry<Float, Float> entry : cpsDataDict.entrySet()) {
+//            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+//        }
+//        // Add the series to the chart
+//        cpsGraph.getData().add(series);
+//        //updateLineChartWithMap(cpsGraph, cpsDataDict);
+//        testAreaBtn.setText(Stats.clicks + " clicks");
     }
 
     // Function to update LineChart values using a Map<T1, T2>
