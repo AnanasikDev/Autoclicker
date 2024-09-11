@@ -9,7 +9,7 @@
 <AnchorPane minHeight="560.0" minWidth="650.0" prefHeight="560.0" prefWidth="650" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EventController">
 
     <!-- Main Container -->
-    <VBox alignment="CENTER" layoutX="50.0" layoutY="40.0" prefWidth="550" spacing="25" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
+    <VBox alignment="CENTER" layoutX="50.0" layoutY="42.0" prefWidth="550" spacing="25" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="42.0">
 
         <!-- Autoclicker Toggle Button -->
         <Button fx:id="toggleBtn" onAction="#toggle" text="Enable Autoclicker" />
@@ -23,13 +23,13 @@
         <!-- Randomness Slider -->
         <VBox alignment="CENTER">
             <Label text="Randomness" />
-            <Slider fx:id="randomnessSlider" blockIncrement="0.1" max="1.0" min="0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="randomnessSlider" min="0" showTickLabels="true" showTickMarks="true" />
         </VBox>
 
         <!-- Skip Chance Slider -->
         <VBox alignment="CENTER">
             <Label text="Chance of Skipping a Click (%)" />
-            <Slider fx:id="skipChanceSlider" max="100" min="0" showTickLabels="true" showTickMarks="true" value="5" />
+            <Slider fx:id="skipChanceSlider" min="0" showTickLabels="true" showTickMarks="true" />
         </VBox>
 
         <!-- Perlin Noise Strength Slider -->
@@ -40,8 +40,7 @@
 
         <!-- Display Current CPS Button -->
         <VBox alignment="CENTER">
-            <Button fx:id="cpsDisplayButton" onAction="#onTestAreaClick" text="Show Current CPS" />
-            <Label fx:id="cpsInfoLabel" text="CPS: 0 | Total Clicks: 0" />
+            <Button fx:id="testAreaBtn" onAction="#onTestAreaClick" text="CPS: %s | Total Clicks: %s" />
         </VBox>
 
     </VBox>

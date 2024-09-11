@@ -14,6 +14,7 @@ public class Clicker implements Runnable {
     private int defaultStartDelay = 1000;
     private int targetCPS = 10;
     private float randomness = 0;
+    private float skipClickChance = 0f;
 
     private Random random;
 
@@ -23,6 +24,10 @@ public class Clicker implements Runnable {
 
     public void setTargetCPS(int cps){
         targetCPS = cps;
+    }
+
+    public void setSkipClickChance(float chance){
+        skipClickChance = chance;
     }
 
     public void setRandomness(float rand){
@@ -67,7 +72,8 @@ public class Clicker implements Runnable {
         if (System.currentTimeMillis() - prevMs >= deltanext){
             prevMs = System.currentTimeMillis();
 
-            simulateClick();
+            if (random.nextFloat() > skipClickChance)
+                simulateClick();
             deltanext = (1000 / targetCPS) + (int)(randomness * ((random.nextFloat() - 0.5f) * 1000.f / targetCPS));
         }
         return true;
