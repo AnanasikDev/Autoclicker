@@ -13,15 +13,22 @@ public class Clicker implements Runnable {
     private int targetCPS = 10;
     private float randomness = 0;
     private float skipClickChance = 0f;
+    private float perlinNoiseFactor = 0f;
 
     private Random random;
+    private NoiseGenerator perlinGenerator;
 
     public Clicker(){
         random = new Random();
+        perlinGenerator = new NoiseGenerator(1);
     }
 
     public void setTargetCPS(int cps){
         targetCPS = cps;
+    }
+
+    public void setPerlinNoiseFactor(float fac){
+        perlinNoiseFactor = fac;
     }
 
     public void setSkipClickChance(float chance){
@@ -70,7 +77,17 @@ public class Clicker implements Runnable {
 
             if (random.nextFloat() > skipClickChance)
                 simulateClick();
-            deltanext = (1000 / targetCPS) + (int)(randomness * ((random.nextFloat() - 0.5f) * 1000.f / targetCPS));
+            deltanext = (int) ((1000 / targetCPS) *
+            (
+                                1f +
+                                perlinNoiseFactor * (
+                                        (perlinGenerator.noise(System.currentTimeMillis()/12) + 0.15f) -
+                                        (perlinGenerator.noise(System.currentTimeMillis()/50)) -
+                                        Math.pow(perlinGenerator.noise(System.currentTimeMillis()/180), 5)) +
+                                randomness * (random.nextFloat() - 0.5f)
+            ));
+            if (deltanext < 0)
+                deltanext = Math.abs(random.nextInt() % 200);
         }
         return true;
     }

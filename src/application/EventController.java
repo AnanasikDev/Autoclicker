@@ -3,6 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 
 public class EventController {
@@ -29,6 +30,11 @@ public class EventController {
             Main.clicker.setSkipClickChance(skipChance);
         });
 
+        perlinNoiseSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            float perlinFactor = newValue.floatValue() / 100.0f;
+            Main.clicker.setPerlinNoiseFactor(perlinFactor);
+        });
+
         // set default style for toggleBtn
         toggleBtn.getStyleClass().add("toggleBtn-disabled");
     }
@@ -43,6 +49,17 @@ public class EventController {
     private Slider cpsSlider;
     @FXML
     private Slider skipChanceSlider;
+    @FXML
+    private Slider perlinNoiseSlider;
+
+    @FXML
+    private ComboBox<String> playKeyCombo;
+
+    @FXML
+    private ComboBox<String> stopKeyCombo;
+
+    @FXML
+    private ComboBox<String> actionKeyCombo;
 
     public void toggle(ActionEvent e){
         if (Main.clicker.getState())

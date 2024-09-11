@@ -53,7 +53,7 @@ public class Main extends Application
         stage.initStyle(StageStyle.DECORATED);
         setPrimaryStage(stage);
         setPrimaryScene(scene);
-        Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("layout2.fxml"));
 
         scene = new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
 
