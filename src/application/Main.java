@@ -1,14 +1,12 @@
 package application;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-//import com.github.kwhat.jnativehook.keyboard.*;
 
 public class Main extends Application
 {
@@ -23,6 +21,32 @@ public class Main extends Application
     {
         clicker = new Clicker();
         Watchdog.Init();
+        Watchdog.onForceEnabled.Subscribe(new Delegate() {
+            @Override
+            public void execute() {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Main.eventController.EnableClicker();
+                    }
+                });
+                System.out.println("enable");
+            }
+        });
+        Watchdog.onForceDisabled.Subscribe(new Delegate() {
+            @Override
+            public void execute() {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Main.eventController.DisableClicker();
+                    }
+                });
+                System.out.println("disable");
+            }
+        });
+
+
 
         stage.initStyle(StageStyle.DECORATED);
         setPrimaryStage(stage);
@@ -38,12 +62,6 @@ public class Main extends Application
         clickerThread.start();
 
         eventController.Init();
-
-        scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ESCAPE) {
-                System.out.println("Hello");
-            }
-        });
     }
 
     public static void main(String[] args)

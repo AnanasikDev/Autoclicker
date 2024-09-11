@@ -56,15 +56,23 @@ public class EventController {
     public void toggle(ActionEvent e){
         if (Main.clicker.getState())
         {
-            toggleBtn.setText("Enable");
-            Main.clicker.Disable();
+            DisableClicker();
         }
         else
         {
-            toggleBtn.setText("Disable");
-            Main.clicker.Enable();
+            EnableClicker();
         }
         System.out.println("Toggled to " + Main.clicker.getState());
+    }
+
+    public void EnableClicker(){
+        toggleBtn.setText("Disable");
+        Main.clicker.Enable();
+    }
+
+    public void DisableClicker(){
+        toggleBtn.setText("Enable");
+        Main.clicker.Disable();
     }
 
     public void onTestAreaClick(ActionEvent e){

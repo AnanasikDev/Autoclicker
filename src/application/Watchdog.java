@@ -10,13 +10,16 @@ public class Watchdog implements NativeKeyListener {
     public static int pauseButton = NativeKeyEvent.VC_ESCAPE;
     public static int startButton = NativeKeyEvent.VC_P;
 
+    public static Action onForceEnabled = new Action();
+    public static Action onForceDisabled = new Action();
+
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         if (e.getKeyCode() == pauseButton) {
-            Main.clicker.Disable();
+            onForceDisabled.Invoke();
         }
         else if (e.getKeyCode() == startButton) {
-            Main.clicker.Enable();
+            onForceEnabled.Invoke();
         }
     }
 
