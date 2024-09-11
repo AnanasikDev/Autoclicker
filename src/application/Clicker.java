@@ -12,7 +12,7 @@ public class Clicker implements Runnable {
     private int deltanext = 250;
     private boolean isEnabled = false;
     private int defaultStartDelay = 1000;
-    private int targetCPS = 20;
+    private int targetCPS = 10;
     private float randomness = 0;
 
     private Random random;
@@ -68,7 +68,7 @@ public class Clicker implements Runnable {
             prevMs = System.currentTimeMillis();
 
             simulateClick();
-            deltanext = (1000 / targetCPS) + (int)(randomness * ((random.nextFloat() - 0.5f) * 1000.f / targetCPS / 2.f));
+            deltanext = (1000 / targetCPS) + (int)(randomness * ((random.nextFloat() - 0.5f) * 1000.f / targetCPS));
         }
         return true;
     }

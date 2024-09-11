@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="450" prefWidth="650" stylesheets="@styles.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="application.EventController">
+<AnchorPane minHeight="560.0" minWidth="650.0" prefHeight="560.0" prefWidth="650" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EventController">
 
     <!-- Main Container -->
-    <VBox alignment="CENTER" layoutX="50" layoutY="40" prefWidth="550" spacing="25">
+    <VBox alignment="CENTER" layoutX="50.0" layoutY="40.0" prefWidth="550" spacing="25" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
 
         <!-- Autoclicker Toggle Button -->
         <Button fx:id="toggleBtn" onAction="#toggle" text="Enable Autoclicker" />
@@ -17,7 +17,7 @@
         <!-- CPS Slider (Clicks per Second) -->
         <VBox alignment="CENTER">
             <Label text="CPS (Clicks per Second)" />
-            <Slider fx:id="cpsSlider" max="50" min="1" showTickLabels="true" showTickMarks="true" value="10" />
+            <Slider fx:id="cpsSlider" max="50" showTickLabels="true" showTickMarks="true" value="10" />
         </VBox>
 
         <!-- Randomness Slider -->

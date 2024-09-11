@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+
 public class Main extends Application
 {
     private static Stage stage;
@@ -53,10 +55,16 @@ public class Main extends Application
         setPrimaryScene(scene);
         Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
 
-        scene = new Scene(root);
+        scene = new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
 
         stage.setScene(scene);
         stage.show();
+
+        // Set minimum width and height for the window
+        stage.setMinWidth(650);
+        stage.setMinHeight(560);
+        stage.setWidth(660);
+        stage.setHeight(560);
 
         Thread clickerThread = new Thread(clicker);
         clickerThread.start();
