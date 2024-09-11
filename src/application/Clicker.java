@@ -1,7 +1,5 @@
 package application;
 
-import javafx.application.Platform;
-
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.util.Random;
@@ -55,12 +53,10 @@ public class Clicker implements Runnable {
 
     public void simulateClick() {
         try {
-            // Create a Robot instance to simulate the click
             Robot robot = new Robot();
 
-            // Simulate right mouse button press and release
-            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);  // Right button down
-            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);  // Right button up
+            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);  // Left button down
+            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);  // Left button up
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,10 +78,7 @@ public class Clicker implements Runnable {
     @Override
     public void run() {
         try {
-            // Simulate some action in a separate thread (e.g., sleeping)
             while (true) {
-                //System.out.println("Clicker working...");
-                //Thread.sleep(2000); // Sleep for 2 seconds
                 if (Update())
                     Thread.sleep(deltanext);
                 else

@@ -2,13 +2,8 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class EventController {
 
@@ -34,14 +29,9 @@ public class EventController {
             Main.clicker.setSkipClickChance(skipChance);
         });
 
+        // set default style for toggleBtn
         toggleBtn.getStyleClass().add("toggleBtn-disabled");
-
-        //XYChart.Series<Number, Number> series = new XYChart.Series<>();
-        //cpsData.setData(FXCollections.observableList(new XYChart.Data<Float, Float>(1.f,2.f)));
-        //cpsGraph.getData().add(series);
     }
-
-    Map<Float, Float> cpsDataDict = new HashMap<>();
 
     @FXML
     private Button testAreaBtn;
@@ -53,9 +43,6 @@ public class EventController {
     private Slider cpsSlider;
     @FXML
     private Slider skipChanceSlider;
-
-    @FXML
-    public LineChart<Number, Number> cpsGraph;
 
     public void toggle(ActionEvent e){
         if (Main.clicker.getState())

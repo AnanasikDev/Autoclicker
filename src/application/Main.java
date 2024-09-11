@@ -63,7 +63,7 @@ public class Main extends Application
         // Set minimum width and height for the window
         stage.setMinWidth(650);
         stage.setMinHeight(560);
-        stage.setWidth(660);
+        stage.setWidth(650);
         stage.setHeight(560);
 
         Thread clickerThread = new Thread(clicker);

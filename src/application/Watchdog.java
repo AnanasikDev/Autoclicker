@@ -33,7 +33,6 @@ public class Watchdog implements NativeKeyListener {
 
     public static void Init(){
         try {
-            // Register JNativeHook
             GlobalScreen.registerNativeHook();
         } catch (NativeHookException e) {
             System.err.println("There was a problem registering the native hook.");
@@ -41,7 +40,6 @@ public class Watchdog implements NativeKeyListener {
             System.exit(1);
         }
 
-        // Add the key listener to the GlobalScreen
         GlobalScreen.addNativeKeyListener(new Watchdog());
     }
 }
