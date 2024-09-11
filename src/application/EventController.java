@@ -1,18 +1,12 @@
 package application;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class EventController {
@@ -34,9 +28,11 @@ public class EventController {
             System.out.println(rand);
         });
 
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        toggleBtn.getStyleClass().add("toggleBtn-disabled");
+
+        //XYChart.Series<Number, Number> series = new XYChart.Series<>();
         //cpsData.setData(FXCollections.observableList(new XYChart.Data<Float, Float>(1.f,2.f)));
-        cpsGraph.getData().add(series);
+        //cpsGraph.getData().add(series);
     }
 
     Map<Float, Float> cpsDataDict = new HashMap<>();
@@ -56,23 +52,26 @@ public class EventController {
     public void toggle(ActionEvent e){
         if (Main.clicker.getState())
         {
-            DisableClicker();
+            Main.clicker.Disable();
+            GUIDisableClicker();
         }
         else
         {
-            EnableClicker();
+            Main.clicker.Enable();
+            GUIEnableClicker();
         }
-        System.out.println("Toggled to " + Main.clicker.getState());
     }
 
-    public void EnableClicker(){
-        toggleBtn.setText("Disable");
-        Main.clicker.Enable();
+    public void GUIEnableClicker(){
+        toggleBtn.setText("ENABLED");
+        toggleBtn.getStyleClass().remove("toggleBtn-disabled");
+        toggleBtn.getStyleClass().add("toggleBtn-enabled");
     }
 
-    public void DisableClicker(){
-        toggleBtn.setText("Enable");
-        Main.clicker.Disable();
+    public void GUIDisableClicker(){
+        toggleBtn.setText("DISABLED");
+        toggleBtn.getStyleClass().remove("toggleBtn-enabled");
+        toggleBtn.getStyleClass().add("toggleBtn-disabled");
     }
 
     public void onTestAreaClick(ActionEvent e){
@@ -92,20 +91,20 @@ public class EventController {
     }
 
     // Function to update LineChart values using a Map<T1, T2>
-    public <T1, T2> void updateLineChartWithMap(LineChart<T1, T2> lineChart, Map<T1, T2> newValues) {
-        // Clear existing data
-        lineChart.getData().clear();
-
-        // Create a new series for the updated data
-        XYChart.Series<T1, T2> series = new XYChart.Series<>();
-        series.setName("Updated Data");
-
-        // Add new data points from the dictionary (map)
-        for (Map.Entry<T1, T2> entry : newValues.entrySet()) {
-            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
-        }
-
-        // Add the series to the LineChart
-        lineChart.getData().add(series);
-    }
+//    public <T1, T2> void updateLineChartWithMap(LineChart<T1, T2> lineChart, Map<T1, T2> newValues) {
+//        // Clear existing data
+//        lineChart.getData().clear();
+//
+//        // Create a new series for the updated data
+//        XYChart.Series<T1, T2> series = new XYChart.Series<>();
+//        series.setName("Updated Data");
+//
+//        // Add new data points from the dictionary (map)
+//        for (Map.Entry<T1, T2> entry : newValues.entrySet()) {
+//            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+//        }
+//
+//        // Add the series to the LineChart
+//        lineChart.getData().add(series);
+//    }
 }

@@ -1,0 +1,106 @@
+/* Background Gradient */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #E0FFFF, #FFFAF0);
+}
+
+/* General Button Styles */
+.button {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-cursor: hand;
+    -fx-padding: 10;
+}
+
+/* General Button Styles */
+.button {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-cursor: hand;
+    -fx-padding: 10;
+    -fx-pref-width: 230;
+    -fx-pref-height: 50;
+}
+
+/* Enabled (Green-Blue) Gradient */
+.toggleBtn-enabled {
+    -fx-background-color: linear-gradient(to right, #50C878, #4A90E2); /* Green to Blue */
+    -fx-border-radius: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 5);
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+/* Disabled (Orange-Red) Gradient */
+.toggleBtn-disabled {
+    -fx-background-color: linear-gradient(to right, #FF7043, #FF5252); /* Orange to Red */
+    -fx-border-radius: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 5);
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+/* Hover Effect (Enabled State) */
+.toggleBtn-enabled:hover {
+    -fx-background-color: linear-gradient(to right, #4CAF50, #56CCF2); /* Brighter Green to Blue */
+}
+
+/* Hover Effect (Disabled State) */
+.toggleBtn-disabled:hover {
+    -fx-background-color: linear-gradient(to right, #FF5722, #FF1744); /* Brighter Orange to Red */
+}
+
+/* Pressed Effect (Enabled State) */
+.toggleBtn-enabled:pressed {
+    -fx-background-color: linear-gradient(to right, #3F9D5A, #3B82C4); /* Darker Green to Blue */
+}
+
+/* Pressed Effect (Disabled State) */
+.toggleBtn-disabled:pressed {
+    -fx-background-color: linear-gradient(to right, #E64A19, #D50000); /* Darker Orange to Red */
+}
+
+
+#cpsDisplayButton {
+    -fx-background-color: linear-gradient(to right, #FF4081, #448AFF);
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+}
+
+/* Label Styles */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #455A64;
+}
+
+#cpsInfoLabel {
+    -fx-font-size: 13px;
+    -fx-text-fill: #546E7A;
+    -fx-font-weight: bold;
+}
+
+/* Slider Styles */
+.slider {
+    -fx-pref-width: 320;
+}
+
+#cpsSlider {
+    -fx-control-inner-background: #81D4FA; /* Solid color for slider track */
+}
+
+#randomnessSlider {
+    -fx-control-inner-background: #FFF59D; /* Solid color for slider track */
+}
+
+#skipChanceSlider {
+    -fx-control-inner-background: #FFCCBC; /* Solid color for slider track */
+}
+
+#perlinNoiseSlider {
+    -fx-control-inner-background: #A5D6A7; /* Solid color for slider track */
+}

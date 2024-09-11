@@ -1,5 +1,7 @@
 package application;
 
+import javafx.application.Platform;
+
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.util.Random;
@@ -9,7 +11,7 @@ public class Clicker implements Runnable {
     private long prevMs;
     private int deltanext = 250;
     private boolean isEnabled = false;
-    private int defaultStartDelay = 3500;
+    private int defaultStartDelay = 1000;
     private int targetCPS = 20;
     private float randomness = 0;
 
@@ -39,9 +41,11 @@ public class Clicker implements Runnable {
         isEnabled = true;
         prevMs = System.currentTimeMillis();
         deltanext = defaultStartDelay;
+        System.out.println("Enabled");
     }
     public void Disable(){
         isEnabled = false;
+        System.out.println("Disabled");
     }
 
     public void simulateClick() {
@@ -64,7 +68,7 @@ public class Clicker implements Runnable {
             prevMs = System.currentTimeMillis();
 
             simulateClick();
-            deltanext = (1000 / targetCPS) + (int)(randomness * (random.nextFloat() * targetCPS / 2f));
+            deltanext = (1000 / targetCPS) + (int)(randomness * ((random.nextFloat() - 0.5f) * 1000.f / targetCPS / 2.f));
         }
         return true;
     }

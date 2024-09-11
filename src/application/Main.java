@@ -27,7 +27,8 @@ public class Main extends Application
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main.eventController.EnableClicker();
+                        Main.clicker.Enable();
+                        Main.eventController.GUIEnableClicker();
                     }
                 });
                 System.out.println("enable");
@@ -39,19 +40,18 @@ public class Main extends Application
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main.eventController.DisableClicker();
+                        Main.clicker.Disable();
+                        Main.eventController.GUIDisableClicker();
                     }
                 });
                 System.out.println("disable");
             }
         });
 
-
-
         stage.initStyle(StageStyle.DECORATED);
         setPrimaryStage(stage);
         setPrimaryScene(scene);
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
 
         scene = new Scene(root);
 
