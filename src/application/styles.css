@@ -38,7 +38,7 @@
 
 /* Disabled (Orange-Red) Gradient */
 .toggleBtn-disabled {
-    -fx-background-color: linear-gradient(to right, #FF7043, #FF5252); /* Orange to Red */
+    -fx-background-color: linear-gradient(to right, #e63953, #FF5252); /* Orange to Red */
     -fx-border-radius: 30;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 5);
     -fx-font-weight: bold;
@@ -47,7 +47,7 @@
 
 /* Hover Effect (Enabled State) */
 .toggleBtn-enabled:hover {
-    -fx-background-color: linear-gradient(to right, #4CAF50, #56CCF2); /* Brighter Green to Blue */
+    -fx-background-color: linear-gradient(to right, #50C878, #56CCF2); /* Brighter Green to Blue */
 }
 
 /* Hover Effect (Disabled State) */
@@ -70,6 +70,10 @@
     -fx-background-color: linear-gradient(to right, #FF4081, #448AFF);
     -fx-pref-width: 250;
     -fx-pref-height: 50;
+}
+
+#testAreaBtn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 0);
 }
 
 /* Label Styles */

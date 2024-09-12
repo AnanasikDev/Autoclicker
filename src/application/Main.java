@@ -9,9 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
 
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
@@ -35,21 +33,26 @@ public class Main extends Application
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main.clicker.Enable();
-                        Main.eventController.GUIEnableClicker();
+                        if (!Main.clicker.isActive()){
+                            Main.clicker.Enable();
+                            Main.eventController.GUIEnableClicker();
+                        }
                     }
                 });
                 System.out.println("enable");
             }
         });
+
         Watchdog.onForceDisabled.Subscribe(new Delegate() {
             @Override
             public void execute() {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main.clicker.Disable();
-                        Main.eventController.GUIDisableClicker();
+                        if (Main.clicker.isActive()){
+                            Main.clicker.Disable();
+                            Main.eventController.GUIDisableClicker();
+                        }
                     }
                 });
                 System.out.println("disable");
@@ -68,7 +71,7 @@ public class Main extends Application
 
         // Set minimum width and height for the window
         stage.getIcons().add(new Image(  Main.class.getResourceAsStream("../icon.png")));
-        stage.setTitle("Anti-anti-clicker");
+        stage.setTitle("Anti-anti-Autoclicker");
         stage.setMinWidth(650);
         stage.setMinHeight(760);
         stage.setWidth(650);

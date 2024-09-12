@@ -17,7 +17,7 @@
     <VBox fx:id="mainVBox" alignment="CENTER" layoutX="50" layoutY="40" prefWidth="550" spacing="25" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
 
         <!-- Autoclicker Toggle Button -->
-        <Button fx:id="toggleBtn" onAction="#toggle" styleClass="toggleBtn-disabled" text="Enable Autoclicker" />
+        <Button fx:id="toggleBtn" onAction="#toggle" text="Enable Autoclicker" />
 
         <!-- CPS Slider (Clicks per Second) -->
         <VBox alignment="CENTER">
@@ -48,10 +48,13 @@
               <!-- Keycode Dropdowns -->
               <VBox alignment="CENTER" prefWidth="189.0" HBox.hgrow="ALWAYS">
                   <Label text="Start Key" />
-                  <ComboBox fx:id="startKeyCombo" onAction="#onStartKeyChanged">
+                  <ComboBox fx:id="startKeyCombo" onAction="#onStartKeyChanged" prefWidth="200.0">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="ESCAPE" />
+                              <String fx:value="LEFT MOUSE BUTTON" />
+                              <String fx:value="RIGHT MOUSE BUTTON" />
+                              <String fx:value="MIDDLE MOUSE BUTTON" />
                               <String fx:value="F1" />
                               <String fx:value="F2" />
                               <String fx:value="F3" />
@@ -142,10 +145,13 @@
 
               <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                   <Label text="Stop Key" />
-                  <ComboBox fx:id="stopKeyCombo" onAction="#onStopKeyChanged">
+                  <ComboBox fx:id="stopKeyCombo" onAction="#onStopKeyChanged" prefWidth="200.0">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="ESCAPE" />
+                              <String fx:value="LEFT MOUSE BUTTON" />
+                              <String fx:value="RIGHT MOUSE BUTTON" />
+                              <String fx:value="MIDDLE MOUSE BUTTON" />
                               <String fx:value="F1" />
                               <String fx:value="F2" />
                               <String fx:value="F3" />
@@ -236,7 +242,7 @@
 
               <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                   <Label text="Action Key" />
-                  <ComboBox fx:id="actionKeyCombo" onAction="#onActionKeyChanged">
+                  <ComboBox fx:id="actionKeyCombo" onAction="#onActionKeyChanged" prefWidth="200.0">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="LEFT MOUSE BUTTON" />

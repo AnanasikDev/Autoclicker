@@ -1,8 +1,5 @@
 package application;
 
-import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
-import java.awt.event.KeyEvent;
-
 import java.awt.Robot;
 import java.util.Random;
 
@@ -49,7 +46,7 @@ public class Clicker implements Runnable {
         actionKey = key;
     }
 
-    public boolean getState(){
+    public boolean isActive(){
         return isEnabled;
     }
 
@@ -96,9 +93,9 @@ public class Clicker implements Runnable {
             (
                                 1f +
                                 perlinNoiseFactor * (
-                                        (perlinGenerator.noise(System.currentTimeMillis()/12) + 0.15f) -
-                                        (perlinGenerator.noise(System.currentTimeMillis()/50)) -
-                                        Math.pow(perlinGenerator.noise(System.currentTimeMillis()/180), 5)) +
+                                        (perlinGenerator.noise((double) System.currentTimeMillis() /12) + 0.15f) -
+                                        (perlinGenerator.noise((double) System.currentTimeMillis() /50)) -
+                                        Math.pow(perlinGenerator.noise((double) System.currentTimeMillis() /180), 5)) +
                                 randomness * (random.nextFloat() - 0.5f)
             ));
             if (deltanext < 0)

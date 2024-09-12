@@ -37,7 +37,7 @@ public class EventController {
 
         startKeyCombo.getSelectionModel().select(46);
         stopKeyCombo.getSelectionModel().select(0);
-        actionKeyCombo.getSelectionModel().select(1);
+        actionKeyCombo.getSelectionModel().select(0);
 
         // set default style for toggleBtn
         toggleBtn.getStyleClass().add("toggleBtn-disabled");
@@ -55,18 +55,15 @@ public class EventController {
     private Slider skipChanceSlider;
     @FXML
     private Slider perlinNoiseSlider;
-
     @FXML
     private ComboBox<String> startKeyCombo;
-
     @FXML
     private ComboBox<String> stopKeyCombo;
-
     @FXML
     private ComboBox<String> actionKeyCombo;
 
     public void toggle(ActionEvent e){
-        if (Main.clicker.getState())
+        if (Main.clicker.isActive())
         {
             Main.clicker.Disable();
             GUIDisableClicker();
