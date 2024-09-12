@@ -8,8 +8,8 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
 public class Watchdog implements NativeKeyListener {
 
-    public static int pauseButton = NativeKeyEvent.VC_ESCAPE;
-    public static int startButton = NativeKeyEvent.VC_P;
+    public static int pauseButton = NativeKeyEvent.VC_Z;
+    public static int startButton = NativeKeyEvent.VC_BACK_SLASH;
 
     public static Action onForceEnabled = new Action();
     public static Action onForceDisabled = new Action();
