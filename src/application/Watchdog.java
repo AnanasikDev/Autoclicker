@@ -15,7 +15,8 @@ public class Watchdog implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        if (e.getKeyCode() == stopButton || e.getKeyCode() == 44) {
+        // default extra stopButton is BackSpace (cannot be disabled)
+        if (e.getKeyCode() == stopButton || e.getKeyCode() == 14) {
             onForceDisabled.Invoke();
         }
         else if (e.getKeyCode() == startButton) {

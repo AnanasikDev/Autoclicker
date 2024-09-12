@@ -1,5 +1,8 @@
 package application;
 
+import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+import java.awt.event.KeyEvent;
+
 import java.awt.Robot;
 import java.util.Random;
 
@@ -75,8 +78,6 @@ public class Clicker implements Runnable {
             }
             else{
                 System.out.println("Keyboard click key:(%s) is not supported.".formatted(actionKey));
-                //robot.keyPress(actionKey);
-                //robot.keyRelease(actionKey);
             }
         } catch (Exception e) {
             e.printStackTrace();
