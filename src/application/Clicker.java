@@ -1,7 +1,6 @@
 package application;
 
 import java.awt.Robot;
-import java.awt.event.InputEvent;
 import java.util.Random;
 
 public class Clicker implements Runnable {
@@ -15,8 +14,12 @@ public class Clicker implements Runnable {
     private float skipClickChance = 0f;
     private float perlinNoiseFactor = 0f;
 
-    private Random random;
-    private NoiseGenerator perlinGenerator;
+    // The key to be autoclicked. LeftMouseButton (1024) by default
+    private int actionKey = 1024;
+
+    private final Random random;
+    private final NoiseGenerator perlinGenerator;
+    private Robot robot;
 
     public Clicker(){
         random = new Random();
@@ -37,6 +40,10 @@ public class Clicker implements Runnable {
 
     public void setRandomness(float rand){
         randomness = rand;
+    }
+
+    public void setActionKey(int key){
+        actionKey = key;
     }
 
     public boolean getState(){
@@ -60,10 +67,17 @@ public class Clicker implements Runnable {
 
     public void simulateClick() {
         try {
-            Robot robot = new Robot();
+            if (robot == null) robot = new Robot();
 
-            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);  // Left button down
-            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);  // Left button up
+            if (actionKey == 1024 || actionKey == 2048 || actionKey == 4096){
+                robot.mousePress(actionKey);
+                robot.mouseRelease(actionKey);
+            }
+            else{
+                System.out.println("Keyboard click key:(%s) is not supported.".formatted(actionKey));
+                //robot.keyPress(actionKey);
+                //robot.keyRelease(actionKey);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -35,6 +35,10 @@ public class EventController {
             Main.clicker.setPerlinNoiseFactor(perlinFactor);
         });
 
+        startKeyCombo.getSelectionModel().select(46);
+        stopKeyCombo.getSelectionModel().select(0);
+        actionKeyCombo.getSelectionModel().select(1);
+
         // set default style for toggleBtn
         toggleBtn.getStyleClass().add("toggleBtn-disabled");
     }
@@ -53,7 +57,7 @@ public class EventController {
     private Slider perlinNoiseSlider;
 
     @FXML
-    private ComboBox<String> playKeyCombo;
+    private ComboBox<String> startKeyCombo;
 
     @FXML
     private ComboBox<String> stopKeyCombo;
@@ -88,7 +92,22 @@ public class EventController {
 
     public void onTestAreaClick(ActionEvent e){
         Stats.clicks++;
-        String format = "CPS: %s | Total Clicks: %s";
-        testAreaBtn.setText(format.formatted(0, Stats.clicks));
+        String format = "Total Clicks: %s";
+        testAreaBtn.setText(format.formatted(Stats.clicks));
+    }
+
+    public void onStartKeyChanged(ActionEvent event) {
+        Watchdog.startButton = Main.parseKeyName(startKeyCombo.getValue());
+        System.out.println(startKeyCombo.getValue());
+    }
+
+    public void onStopKeyChanged(ActionEvent event) {
+        Watchdog.stopButton = Main.parseKeyName(stopKeyCombo.getValue());
+        System.out.println(stopKeyCombo.getValue());
+    }
+
+    public void onActionKeyChanged(ActionEvent event) {
+        Main.clicker.setActionKey(Main.parseKeyName(actionKeyCombo.getValue()));
+        System.out.println(actionKeyCombo.getValue());
     }
 }

@@ -2,13 +2,12 @@ package application;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
-import com.github.kwhat.jnativehook.NativeSystem;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
 public class Watchdog implements NativeKeyListener {
 
-    public static int pauseButton = NativeKeyEvent.VC_Z;
+    public static int stopButton = NativeKeyEvent.VC_Z;
     public static int startButton = NativeKeyEvent.VC_BACK_SLASH;
 
     public static Action onForceEnabled = new Action();
@@ -16,7 +15,7 @@ public class Watchdog implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        if (e.getKeyCode() == pauseButton) {
+        if (e.getKeyCode() == stopButton || e.getKeyCode() == 44) {
             onForceDisabled.Invoke();
         }
         else if (e.getKeyCode() == startButton) {

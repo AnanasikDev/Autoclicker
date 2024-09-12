@@ -46,9 +46,9 @@
          <children>
 
               <!-- Keycode Dropdowns -->
-              <VBox alignment="CENTER" prefWidth="189.0">
-                  <Label text="Play Key" />
-                  <ComboBox fx:id="playKeyCombo" prefWidth="200">
+              <VBox alignment="CENTER" prefWidth="189.0" HBox.hgrow="ALWAYS">
+                  <Label text="Start Key" />
+                  <ComboBox fx:id="startKeyCombo" onAction="#onStartKeyChanged">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="ESCAPE" />
@@ -143,9 +143,9 @@
                </HBox.margin>
               </VBox>
 
-              <VBox alignment="CENTER">
+              <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                   <Label text="Stop Key" />
-                  <ComboBox fx:id="stopKeyCombo" prefWidth="200">
+                  <ComboBox fx:id="stopKeyCombo" onAction="#onStopKeyChanged">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="ESCAPE" />
@@ -240,9 +240,9 @@
                </HBox.margin>
               </VBox>
 
-              <VBox alignment="CENTER">
+              <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                   <Label text="Action Key" />
-                  <ComboBox fx:id="actionKeyCombo" prefWidth="200">
+                  <ComboBox fx:id="actionKeyCombo" onAction="#onActionKeyChanged">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="ESCAPE" />
@@ -341,7 +341,7 @@
 
         <!-- Display Current CPS Button -->
         <VBox alignment="CENTER">
-            <Button fx:id="testAreaBtn" onAction="#onTestAreaClick" text="CPS: 0 | Total Clicks: 0" />
+            <Button fx:id="testAreaBtn" onAction="#onTestAreaClick" text="Click here!" />
         </VBox>
 
     </VBox>
