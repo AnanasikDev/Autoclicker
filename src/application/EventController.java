@@ -8,41 +8,7 @@ import javafx.scene.control.Slider;
 
 public class EventController {
 
-    public EventController(){
-        Main.eventController = this;
-    }
-
-    public void Init(){
-        cpsSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            int cps = newValue.intValue();
-            Main.clicker.setTargetCPS(cps);
-            System.out.println(cps);
-        });
-
-        randomnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            float rand = newValue.floatValue() / 100.0f;
-            Main.clicker.setRandomness(rand);
-            System.out.println(rand);
-        });
-
-        skipChanceSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            float skipChance = newValue.floatValue() / 100.0f;
-            Main.clicker.setSkipClickChance(skipChance);
-        });
-
-        perlinNoiseSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            float perlinFactor = newValue.floatValue() / 100.0f;
-            Main.clicker.setPerlinNoiseFactor(perlinFactor);
-        });
-
-        startKeyCombo.getSelectionModel().select(46);
-        stopKeyCombo.getSelectionModel().select(0);
-        actionKeyCombo.getSelectionModel().select(0);
-
-        // set default style for toggleBtn
-        toggleBtn.getStyleClass().add("toggleBtn-disabled");
-    }
-
+    /* FXML elements fx:id's */
     @FXML
     private Button testAreaBtn;
     @FXML
@@ -62,6 +28,41 @@ public class EventController {
     @FXML
     private ComboBox<String> actionKeyCombo;
 
+
+    public EventController(){
+        Main.eventController = this;
+    }
+
+    public void Init(){
+        cpsSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            int cps = newValue.intValue();
+            Main.clicker.setTargetCPS(cps);
+        });
+
+        randomnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            float rand = newValue.floatValue() / 100.0f;
+            Main.clicker.setRandomness(rand);
+        });
+
+        skipChanceSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            float skipChance = newValue.floatValue() / 100.0f;
+            Main.clicker.setSkipClickChance(skipChance);
+        });
+
+        perlinNoiseSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            float perlinFactor = newValue.floatValue() / 100.0f;
+            Main.clicker.setPerlinNoiseFactor(perlinFactor);
+        });
+
+        startKeyCombo.getSelectionModel().select(43);
+        stopKeyCombo.getSelectionModel().select(0);
+        actionKeyCombo.getSelectionModel().select(0);
+
+        // set default style for toggleBtn
+        toggleBtn.getStyleClass().add("toggleBtn-disabled");
+    }
+
+    // toggleBtn callback function
     public void toggle(ActionEvent e){
         if (Main.clicker.isActive())
         {
